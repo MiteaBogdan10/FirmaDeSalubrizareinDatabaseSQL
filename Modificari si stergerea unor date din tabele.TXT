@@ -1,0 +1,29 @@
+--operatii de modificare
+--1
+UPDATE Angajatii 
+SET Salariu=2700 
+WHERE ID_Angajat=7;
+
+--2
+UPDATE Angajatii
+SET Prenume='Andrei'
+WHERE ID_Angajat=9;
+
+--3
+UPDATE Locatii
+SET Oras='Constanta'
+WHERE ID_Locatie=10;
+
+--4
+UPDATE Clientii
+SET Telefon='0749932877'
+WHERE ID_Clientii=5;
+
+--operatii de stergere
+--1
+DELETE FROM Angajatii
+WHERE ID_Angajat = 11; 
+
+--2
+DELETE FROM Angajatii
+WHERE ID_Angajat = 12; 

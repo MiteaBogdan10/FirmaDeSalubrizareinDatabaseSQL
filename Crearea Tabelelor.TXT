@@ -1,0 +1,73 @@
+create table Departament
+(
+ID_Dep INT,
+DenumireDep VARCHAR(50),
+ManagerDep VARCHAR(50)
+);
+-- adaugam constrangerea de cheie primara asupra atributului ID_Dep
+alter table Departament add constraint ID_Dep_PK primary key (ID_Dep);
+
+
+create table Angajatii
+(
+ID_Angajat INT,
+Nume VARCHAR(50),
+Prenume VARCHAR(50),
+Adresa VARCHAR(50),
+Salariu INT
+);
+-- adaugam constrangerea de cheie primara asupra atributului ID_Angajat
+alter table Angajatii add constraint ID_Angajat_PK primary key (ID_Angajat);
+alter table Angajatii add constraint ID_Dep2_PK foreign key (ID_Dep) references Departament(ID_Dep);
+alter table Angajatii ADD ID_Dep INT;
+
+create table Clientii
+(
+ID_Clientii INT,
+Nume VARCHAR(50),
+Adresa VARCHAR(50),
+Telefon VARCHAR(20)
+);
+-- adaugam constrangerea de cheie primara asupra atributului ID_Clientii
+alter table Clientii add constraint ID_Clientii_PK primary key (ID_Clientii);
+
+
+create table Locatii
+(
+ID_Locatie INT,
+Oras VARCHAR(50)
+);
+-- adaugam constrangerea de cheie primara asupra atributului ID_Locatie
+alter table Locatii add constraint ID_Locatie_PK primary key (ID_Locatie);
+alter table Locatii ADD ID_Dep INT;
+alter table Locatii add constraint ID_Locatie2_PK foreign key (ID_Dep) references Departament(ID_Dep);
+
+create table Utilaj
+(
+ID_Utilaj INT,
+DenumireUtilaj VARCHAR(50)
+);
+
+-- adaugam constrangerea de cheie primara asupra atributului ID_Locatie
+alter table Utilaj add constraint ID_Utilaj_PK primary key (ID_Utilaj);
+
+create table Angajatii_Clientii
+(
+ID_Angajat INT,
+ID_Clientii INT,
+NrOreLucrate INT
+);
+-- constrângerile de fk pentru ID_Angajatii și ID_Clientii
+alter table Angajatii_Clientii add constraint ID_Angajat2_FK foreign key (ID_Angajat) references Angajatii (ID_Angajat);
+alter table Angajatii_Clientii add constraint ID_Clientii2_FK foreign key (ID_Clientii) references Clientii (ID_Clientii);
+
+
+create table Locatii_Utilaj
+(
+ID_Locatie INT,
+ID_Utilaj INT
+);
+
+-- constrângerile de fk pentru ID_Locatie și ID_Utilaj
+alter table Locatii_Utilaj add constraint ID_Locatie2_FK foreign key (ID_Locatie) references Locatii (ID_Locatie);
+alter table Locatii_Utilaj add constraint ID_Utilaj2_FK foreign key (ID_Utilaj) references Utilaj (ID_Utilaj);

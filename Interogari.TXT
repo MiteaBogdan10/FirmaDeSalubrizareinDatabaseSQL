@@ -1,0 +1,160 @@
+The FULL OUTER JOIN keyword returns all matching records from both tables whether the other table matches or not. So, if there are rows in T1 that do not have matches in T2, or if there are rows in T2 that do not have matches in T1, those rows will be listed as well.
+--interogari
+--1
+--să se afișeze numele,prenumele si adresa angajaților care lucrează la departamentul 'Serviciul de deszapezire'.
+SELECT Angajatii.Nume, Angajatii.Prenume,Angajatii.Adresa
+FROM Angajatii INNER JOIN Departament ON Angajatii.ID_Dep = Departament.ID_Dep AND DenumireDep='Serviciul de deszapezire';
+
+--2
+----Sa se afiseze toate departamentele impreuna cu angajatii pe care ii au
+select Departament.DenumireDep, Angajatii.Nume, Angajatii.Prenume
+from Departament
+left join Angajatii on Departament.ID_Dep = Angajatii.ID_Dep
+
+--3
+----Sa se afiseze toate locatiile impreuna cu utilajele pe care le au
+select Locatii.ID_Locatie, Utilaj.DenumireUtilaj
+from ((Locatii
+right join Locatii_Utilaj on Locatii.ID_Locatie = Locatii_Utilaj.ID_Locatie)
+inner join Utilaj on Locatii_Utilaj.ID_Utilaj = Utilaj.ID_Utilaj);
+
+--4
+--Sa se afiseze angajatii care au lucrat pentru clientul cu id-ul 3
+select Angajatii.Nume, Angajatii.Prenume
+from Angajatii
+inner join Angajatii_Clientii on Angajatii.ID_Angajat = Angajatii_Clientii.ID_Angajat
+		and Angajatii_Clientii.ID_Clientii = 3;
+
+--5
+--sa se afiseze toate departamentele impreuna cu locatiile lor
+select Departament.DenumireDep,Locatii.Oras
+from Departament left join Locatii on Departament.ID_Dep= Locatii.ID_Dep;
+
+--6
+--sa se afiseze angajatul cu cel mai mare salariu 
+select Nume,Prenume,Salariu
+from Angajatii
+where (select MAX(Salariu) from Angajatii)=Salariu;
+
+--7
+--Sa se afiseze pentru fiecare locatie numarul de utilaje
+select Locatii.ID_Locatie, count(*) as NumarUtilaje
+from Locatii, Locatii_Utilaj
+where Locatii.ID_Locatie = Locatii_Utilaj.ID_Locatie
+group by Locatii.ID_Locatie;
+
+--8
+--Sa se afiseze angajatul cu cel mai mic nr de ore lucrate
+select Angajatii.Nume, Angajatii.Prenume, Angajatii_Clientii.NrOreLucrate
+from Angajatii, Angajatii_Clientii
+where Angajatii.ID_Angajat = Angajatii_Clientii.ID_Angajat 
+			and (select min(NrOreLucrate) from Angajatii_Clientii) = Angajatii_Clientii.NrOreLucrate;
+
+--9
+--Sa se afiseze numarul de ore lucrat de fiecare angajat
+select Angajatii.Nume, Angajatii.Prenume, sum(NrOreLucrate)
+from Angajatii, Angajatii_Clientii
+where Angajatii.ID_Angajat = Angajatii_Clientii.ID_Angajat
+group by Angajatii.Nume, Angajatii.Prenume;
+
+--10
+----Sa se afiseze media salariilor in functie de Departament
+select Departament.DenumireDep, avg(Salariu) as medie
+from Departament, Angajatii
+where Departament.ID_Dep = Angajatii.ID_Dep
+group by Departament.DenumireDep;
+
+--11
+--sa se afiseze angajatii care au nr de ore lucrate mai mare de 6 
+select Nume,Prenume
+from Angajatii
+where ID_Angajat=ANY
+(select ID_Angajat
+from Angajatii_Clientii
+where NrOreLucrate > 6);
+
+--12
+----Sa se afiseze angajatii care lucreaza in departamente cu locatia in Craiova sau Bucuresti
+select  Angajatii.Nume, Angajatii.Prenume
+from Angajatii
+where exists (select * from Departament where Departament.ID_Dep = Angajatii.ID_Dep and 
+		exists (select * from Locatii where Departament.ID_Dep = Locatii.ID_Dep and
+			  Oras in ('Craiova', 'Bucuresti')));
+
+--13
+--Sa se afiseze toate departamentele la care lucreaza angajati care au salariu mai mare ca 2000
+select Departament.DenumireDep
+from Departament
+where Departament.ID_Dep = any (select Angajatii.ID_Dep
+							   from Angajatii
+							   where Angajatii.Salariu >= 2000);
+--14
+----Sa se afiseze toti angajatii care pot sa lucreze pe excavator
+
+select Angajatii.Nume, Angajatii.Prenume
+from Angajatii
+where exists (select * from Departament where Departament.ID_Dep = Angajatii.ID_Dep
+		and exists (select * from Locatii where Departament.ID_Dep = Locatii.ID_Dep
+			and exists (select * from Locatii_Utilaj where Locatii.ID_Locatie = Locatii_Utilaj.ID_Locatie
+				and exists (select * from Utilaj where Utilaj.ID_Utilaj = Locatii_Utilaj.ID_Utilaj
+					and Utilaj.DenumireUtilaj = 'excavator'))));
+							 
+--15
+----Sa se afiseze angajatii care nu lucreaza in departamentul 4
+
+select Angajatii.Nume, Angajatii.Prenume
+from Angajatii
+where exists (select * from Departament where Departament.ID_Dep = Angajatii.ID_Dep
+			 and Departament.ID_Dep != 4);
+			 
+--16
+--Sa se afiseze afiseze fie angajatii care lucreaza la departamentul de semnalizare rutiera, fie cei
+--cu care lucreaza intr-un departament cu locatia in Craiova
+			  
+(select Angajatii.Nume, Angajatii.Prenume
+from Angajatii
+where exists (select * from Departament where Departament.ID_Dep = Angajatii.ID_Dep
+			 and Departament.DenumireDep like '%semnalizare rutiera%'))
+union
+(select Angajatii.Nume, Angajatii.Prenume
+from Angajatii
+where exists (select * from Departament where Departament.ID_Dep = Angajatii.ID_Dep
+		and exists (select * from Locatii where Departament.ID_Dep = Locatii.ID_Dep 
+			and Locatii.Oras = 'Craiova')));
+			
+--17
+--Sa se afiseze angajatii care nu au lucrat pentru niciun client
+			  
+select Angajatii.Nume, Angajatii.Prenume
+from Angajatii
+where not exists (select * from Angajatii_Clientii 
+				  where Angajatii.ID_Angajat = Angajatii_Clientii.ID_Angajat);
+				 
+--18
+----vedere formata din numele angajatiilor, numele departamentului si nr de ore lucrate
+
+create view Vedere1 as
+select Angajatii.Nume, Angajatii.Prenume, Departament.DenumireDep, sum(NrOreLucrate) as NrOreLucrate
+from Angajatii, Departament, Angajatii_Clientii
+where Departament.ID_Dep = Angajatii.ID_Dep and Angajatii.ID_Angajat = Angajatii_Clientii.ID_Angajat
+group by Angajatii.Nume, Angajatii.Prenume, Departament.DenumireDep
+order by NrOreLucrate desc;
+
+--19
+--vedere formata din clientii si angajatii care au prestat servicii
+create view Vedere2 as
+select Clientii.Nume as NumeClient,
+			  Angajatii.Nume as NumeAngajat, Angajatii.Prenume as PrenumeAngajat
+from ((Angajatii_Clientii
+inner join Angajatii on Angajatii.ID_Angajat = Angajatii_Clientii.ID_Angajat)
+inner join Clientii on Clientii.ID_Clientii = Angajatii_Clientii.ID_Clientii);
+
+--20
+--vedere formata din salariul mediu al unui angajat in functie de locatie
+
+create view Vedere3 as
+select Locatii.Oras, avg(Angajatii.Salariu)
+from Locatii, Angajatii
+where exists (select * from Departament where Departament.ID_Dep = Angajatii.ID_Dep
+		and Departament.ID_Dep = Locatii.ID_Dep)
+group by Locatii.Oras;

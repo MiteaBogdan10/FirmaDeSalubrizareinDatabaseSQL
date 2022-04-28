@@ -1,0 +1,538 @@
+--inserarea datelor in tabel
+insert into Departament(ID_Dep, DenumireDep, ManagerDep)
+values
+(
+	1,
+	'Serviciul de colectare si transport deseuri',
+	'Codrin Bogza'
+)
+insert into Departament
+values
+(
+	2,
+	'Serviciul de salubrizare stradala',
+	'Adi Stoica'
+);
+insert into Departament(ID_Dep, DenumireDep, ManagerDep)
+values
+(
+	3,
+	'Serviciul de semnalizare rutiera',
+	'Filip Neacsu'
+)
+insert into Departament(ID_Dep, DenumireDep, ManagerDep)
+values
+(
+	4,
+	'Serviciul de intretinere partiei',
+	'Gabriel Tanase'
+)
+insert into Departament(ID_Dep, DenumireDep, ManagerDep)
+values
+(
+	5,
+	'Serviciul de deszapezire',
+	'Alex Diaconescu'
+)
+insert into Departament(ID_Dep, DenumireDep, ManagerDep)
+values
+(
+	6,
+	'Serviciul de vidanjare',
+	'Marin Rusu'
+)
+insert into Departament(ID_Dep, DenumireDep, ManagerDep)
+values
+(
+	7,
+	'Serviciul de dezinsectie si deratizare',
+	'Martin Vulcan'
+)
+insert into Departament(ID_Dep, DenumireDep, ManagerDep)
+values
+(
+	8,
+	'Serviciul de ecarisaj',
+	'Doru Vladu'
+)
+insert into Departament(ID_Dep, DenumireDep, ManagerDep)
+values
+(
+	9,
+	'Serviciul de colectare deseuri din constructii',
+	'Sorin Ianculescu'
+)
+insert into Departament(ID_Dep, DenumireDep, ManagerDep)
+values
+(
+	10,
+	'Serviciul de salubrizare piete',
+	'Jan Iliescu'
+)
+
+insert into Angajatii(ID_Angajat, Nume, Prenume, Adresa, Salariu, ID_Dep)
+values
+(
+	1,
+	'Nicusor',
+	'Zamfir',
+	'Intrare Vladaia 26,Craiova',
+	2500,
+	1
+)
+insert into Angajatii(ID_Angajat, Nume, Prenume, Adresa, Salariu, ID_Dep)
+values
+(
+	2,
+	'Danut',
+	'Suciu',
+	'Alee Râmnicu Vâlcea 12,Craiova',
+	2300,
+	2
+)
+insert into Angajatii(ID_Angajat, Nume, Prenume, Adresa, Salariu, ID_Dep)
+values
+(
+	3,
+	'Rares',
+	'Lupul',
+	'Strada Straoani 1,Craiova',
+	2600,
+	3
+)
+insert into Angajatii(ID_Angajat, Nume, Prenume, Adresa, Salariu, ID_Dep)
+values
+(
+	4,
+	'Costi',
+	'Minea',
+	'Strada Parfumului 20,Craiova',
+	2890,
+	4
+)
+insert into Angajatii(ID_Angajat, Nume, Prenume, Adresa, Salariu, ID_Dep)
+values
+(
+	5,
+	'Soare',
+	'Cojocaru',
+	'Strada Plugarilor 1,Craiova',
+	2900,
+	5
+)
+insert into Angajatii(ID_Angajat, Nume, Prenume, Adresa, Salariu, ID_Dep)
+values
+(
+	6,
+	'Danus',
+	'Puiu',
+	'Strada Aviatiei 23,Craiova',
+	2450,
+	6
+)
+insert into Angajatii(ID_Angajat, Nume, Prenume, Adresa, Salariu, ID_Dep)
+values
+(
+	7,
+	'Dragomir',
+	'Ionut',
+	'Strada Petru Rares 35,Craiova',
+	2670,
+	7
+)
+insert into Angajatii(ID_Angajat, Nume, Prenume, Adresa, Salariu, ID_Dep)
+values
+(
+	8,
+	'Chitu',
+	'Alin',
+	'Bulevard Carol I 9,Craiova',
+	2700,
+	8
+)
+insert into Angajatii(ID_Angajat, Nume, Prenume, Adresa, Salariu, ID_Dep)
+values
+(
+	9,
+	'Enescu',
+	'Emilian',
+	'Strada Doinei 16,Craiova',
+	2800,
+	9
+)
+insert into Angajatii(ID_Angajat, Nume, Prenume, Adresa, Salariu, ID_Dep)
+values
+(
+	10,
+	'Cardei',
+	'Stefan',
+	'Strada Cluceru Sandu 13,Craiova',
+	3100,
+	10
+)
+insert into Angajatii(ID_Angajat, Nume, Prenume, Adresa, Salariu, ID_Dep)
+values
+(
+	11,
+	'Horatiu',
+	'Prunea',
+	'Strada Vidraru 19,Craiova',
+	3200,
+	10
+)
+insert into Angajatii(ID_Angajat, Nume, Prenume, Adresa, Salariu, ID_Dep)
+values
+(
+	12,
+	'Zamfir',
+	'Ioan',
+	'Strada Alecsandri Vasile 25,Craiova',
+	3300,
+	9
+)
+
+
+insert into Clientii(ID_Clientii, Nume, Adresa, Telefon)
+values
+(
+	1,
+	'Ionut Craciun',
+	'Strada Digului 15,Craiova',
+	'0737932877'
+)
+insert into Clientii(ID_Clientii, Nume, Adresa, Telefon)
+values
+(
+	2,
+	'Denis Mihalache',
+	'Strada Alpinistilor 4,Craiova',
+	'0737932446'
+)
+insert into Clientii(ID_Clientii, Nume, Adresa, Telefon)
+values
+(
+	3,
+	'Codrin Bunea',
+	'Strada Darmanesti 23,Craiova',
+	'0732932876'
+)
+insert into Clientii(ID_Clientii, Nume, Adresa, Telefon)
+values
+(
+	4,
+	'Horea Cojoc',
+	'Strada Lamark 1,Craiova',
+	'0737912876'
+)
+insert into Clientii(ID_Clientii, Nume, Adresa, Telefon)
+values
+(
+	5,
+	'Marin Mocanu',
+	'Strada Ciacova 23,Craiova',
+	'0737932876'
+)
+insert into Clientii(ID_Clientii, Nume, Adresa, Telefon)
+values
+(
+	6,
+	'Gavril Ene',
+	'Alee Pacii 9,Craiova',
+	'0748882326'
+)
+insert into Clientii(ID_Clientii, Nume, Adresa, Telefon)
+values
+(
+	7,
+	'Silviu Gherea',
+	'Strada Privighetorii 24,Craiova',
+	'0745178705'
+)
+insert into Clientii(ID_Clientii, Nume, Adresa, Telefon)
+values
+(
+	8,
+	'Laurentiu Rusu',
+	'Strada Valcelei 4,Craiova',
+	'0723587392'
+)
+insert into Clientii(ID_Clientii, Nume, Adresa, Telefon)
+values
+(
+	9,
+	'Dorin Lupei',
+	'Strada Ciucas 2,Craiova',
+	'0724541597'
+)
+insert into Clientii(ID_Clientii, Nume, Adresa, Telefon)
+values
+(
+	10,
+	'Alin Sala',
+	'Strada Modestiei 3,Craiova',
+	'0721508958'
+)
+
+insert into Angajatii_Clientii(ID_Angajat, ID_Clientii, NrOreLucrate)
+values
+(
+	1,
+	1,
+	3
+)
+insert into Angajatii_Clientii(ID_Angajat, ID_Clientii, NrOreLucrate)
+values
+(
+	2,
+	2,
+	5
+)
+insert into Angajatii_Clientii(ID_Angajat, ID_Clientii, NrOreLucrate)
+values
+(
+	3,
+	3,
+	2
+)
+insert into Angajatii_Clientii(ID_Angajat, ID_Clientii, NrOreLucrate)
+values
+(
+	4,
+	4,
+	3
+)
+insert into Angajatii_Clientii(ID_Angajat, ID_Clientii, NrOreLucrate)
+values
+(
+	5,
+	5,
+	6
+)
+insert into Angajatii_Clientii(ID_Angajat, ID_Clientii, NrOreLucrate)
+values
+(
+	6,
+	6,
+	5
+)
+insert into Angajatii_Clientii(ID_Angajat, ID_Clientii, NrOreLucrate)
+values
+(
+	7,
+	7,
+	8
+)
+insert into Angajatii_Clientii(ID_Angajat, ID_Clientii, NrOreLucrate)
+values
+(
+	8,
+	8,
+	6
+)
+insert into Angajatii_Clientii(ID_Angajat, ID_Clientii, NrOreLucrate)
+values
+(
+	9,
+	9,
+	2
+)
+insert into Angajatii_Clientii(ID_Angajat, ID_Clientii, NrOreLucrate)
+values
+(
+	10,
+	10,
+	1
+)
+
+insert into Locatii(ID_Locatie, Oras, ID_Dep)
+values
+(
+	1,
+	'Craiova',
+	1
+)
+insert into Locatii(ID_Locatie, Oras, ID_Dep)
+values
+(
+	2,
+	'Craiova',
+	2
+)
+insert into Locatii(ID_Locatie, Oras, ID_Dep)
+values
+(
+	3,
+	'Craiova',
+	3
+)
+insert into Locatii(ID_Locatie, Oras, ID_Dep)
+values
+(
+	4,
+	'Brasov',
+	4
+)
+insert into Locatii(ID_Locatie, Oras, ID_Dep)
+values
+(
+	5,
+	'Bucuresti',
+	5
+)
+insert into Locatii(ID_Locatie, Oras, ID_Dep)
+values
+(
+	6,
+	'Bucuresti',
+	6
+)
+insert into Locatii(ID_Locatie, Oras, ID_Dep)
+values
+(
+	7,
+	'Pitesti',
+	7
+)
+insert into Locatii(ID_Locatie, Oras, ID_Dep)
+values
+(
+	8,
+	'Pitesti',
+	8
+)
+insert into Locatii(ID_Locatie, Oras, ID_Dep)
+values
+(
+	9,
+	'Slatina',
+	9
+)
+insert into Locatii(ID_Locatie, Oras, ID_Dep)
+values
+(
+	10,
+	'Slatina',
+	10
+)
+
+insert into Utilaj(ID_Utilaj, DenumireUtilaj)
+values
+(
+	1,
+	'autogunoiere'
+)
+insert into Utilaj(ID_Utilaj, DenumireUtilaj)
+values
+(
+	2,
+	'autobasculante'
+)
+insert into Utilaj(ID_Utilaj, DenumireUtilaj)
+values
+(
+	3,
+	'automaturatori stradale'
+)
+insert into Utilaj(ID_Utilaj, DenumireUtilaj)
+values
+(
+	4,
+	'utilaje desapezire'
+)
+insert into Utilaj(ID_Utilaj, DenumireUtilaj)
+values
+(
+	5,
+	'echipamente dezinsectie'
+)
+insert into Utilaj(ID_Utilaj, DenumireUtilaj)
+values
+(
+	6,
+	'echipamente curatare urbana'
+)
+insert into Utilaj(ID_Utilaj, DenumireUtilaj)
+values
+(
+	7,
+	'excavator'
+)
+insert into Utilaj(ID_Utilaj, DenumireUtilaj)
+values
+(
+	8,
+	'multihog'
+)
+insert into Utilaj(ID_Utilaj, DenumireUtilaj)
+values
+(
+	9,
+	'energreen'
+)
+insert into Utilaj(ID_Utilaj, DenumireUtilaj)
+values
+(
+	10,
+	'placa compactoare'
+)
+
+insert into Locatii_Utilaj(ID_Locatie, ID_Utilaj)
+values
+(
+	1,
+	1
+)
+insert into Locatii_Utilaj(ID_Locatie, ID_Utilaj)
+values
+(
+	2,
+	2
+)
+insert into Locatii_Utilaj(ID_Locatie, ID_Utilaj)
+values
+(
+	3,
+	3
+)
+insert into Locatii_Utilaj(ID_Locatie, ID_Utilaj)
+values
+(
+	4,
+	4
+)
+insert into Locatii_Utilaj(ID_Locatie, ID_Utilaj)
+values
+(
+	5,
+	5
+)
+insert into Locatii_Utilaj(ID_Locatie, ID_Utilaj)
+values
+(
+	6,
+	6
+)
+insert into Locatii_Utilaj(ID_Locatie, ID_Utilaj)
+values
+(
+	7,
+	7
+)
+insert into Locatii_Utilaj(ID_Locatie, ID_Utilaj)
+values
+(
+	8,
+	8
+)
+insert into Locatii_Utilaj(ID_Locatie, ID_Utilaj)
+values
+(
+	9,
+	9
+)
+insert into Locatii_Utilaj(ID_Locatie, ID_Utilaj)
+values
+(
+	10,
+	10
+)
