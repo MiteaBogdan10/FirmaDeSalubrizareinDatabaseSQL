@@ -6,3 +6,4 @@ In folderul cu imagini se afla toate screenshot-urile pentru fiecare etapa:
 ->modificarea si stergerea anumitor tabele;
 ->interogari;
 ->vederi.
+Mai contine si un raport realizat in word unde contine toate informatiile necesare pt acest proiect.
